@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collaborative Canvas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Collaborative Drawing Canvas</h1>
+            <div class="user-info">
+                <input type="text" id="userName" placeholder="Enter your name" maxlength="20">
+                <input type="text" id="roomId" placeholder="Room ID (default: main)" value="main">
+                <button id="joinBtn">Join Room</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="toolbar">
+                <div class="tool-section">
+                    <h3>Tools</h3>
+                    <div class="tool-buttons">
+                        <button id="brushBtn" class="tool-btn active" data-tool="brush">Brush</button>
+                        <button id="eraserBtn" class="tool-btn" data-tool="eraser">Eraser</button>
+                    </div>
+                </div>
+
+                <div class="tool-section">
+                    <h3>Color</h3>
+                    <div class="color-picker">
+                        <input type="color" id="colorPicker" value="#000000">
+                        <div class="color-presets">
+                            <div class="color-preset" data-color="#000000" style="background: #000000"></div>
+                            <div class="color-preset" data-color="#FF0000" style="background: #FF0000"></div>
+                            <div class="color-preset" data-color="#00FF00" style="background: #00FF00"></div>
+                            <div class="color-preset" data-color="#0000FF" style="background: #0000FF"></div>
+                            <div class="color-preset" data-color="#FFFF00" style="background: #FFFF00"></div>
+                            <div class="color-preset" data-color="#FF00FF" style="background: #FF00FF"></div>
+                            <div class="color-preset" data-color="#00FFFF" style="background: #00FFFF"></div>
+                            <div class="color-preset" data-color="#FFA500" style="background: #FFA500"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-section">
+                    <h3>Brush Size</h3>
+                    <input type="range" id="brushSize" min="1" max="50" value="5">
+                    <span id="brushSizeValue">5</span>
+                </div>
+
+                <div class="tool-section">
+                    <h3>Actions</h3>
+                    <div class="action-buttons">
+                        <button id="undoBtn">Undo</button>
+                        <button id="redoBtn">Redo</button>
+                        <button id="clearBtn">Clear</button>
+                    </div>
+                </div>
+
+                <div class="tool-section">
+                    <h3>Online Users</h3>
+                    <div id="usersList"></div>
+                </div>
+            </aside>
+
+            <div class="canvas-container">
+                <canvas id="drawingCanvas"></canvas>
+                <div id="cursors"></div>
+            </div>
+        </div>
+
+        <div id="statusBar">
+            <span id="statusText">Disconnected</span>
+            <span id="fpsCounter"></span>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="websocket.js"></script>
+    <script src="canvas.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
+
