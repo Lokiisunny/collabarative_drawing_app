@@ -10,8 +10,6 @@ A real-time multi-user drawing application where multiple people can draw simult
 - **Global Undo/Redo**: Undo and redo operations work across all users
 - **User Management**: See who's online with assigned colors
 - **Room System**: Multiple isolated canvases
-- **Touch Support**: Works on mobile devices with touch input
-- **Performance Metrics**: FPS counter for monitoring performance
 
 ## Setup Instructions
 
@@ -92,17 +90,13 @@ collaborative-canvas/
 
 1. **Canvas Resize**: When browser window is resized, canvas redraws but may lose some stroke precision
 2. **High Latency**: Under high network latency, drawing may appear slightly delayed
-3. **Operation History**: Undo/redo works but may not perfectly sync in edge cases with rapid operations
-4. **Mobile Performance**: On older mobile devices, performance may degrade with many simultaneous users
-5. **No Persistence**: Drawings are not saved to database - lost on server restart
-6. **Room Cleanup**: Empty rooms are cleaned up but may persist briefly in memory
+3. **No Persistence**: Drawings are not saved to database - lost on server restart
+4. **Room Cleanup**: Empty rooms are cleaned up but may persist briefly in memory
 
 ## Technical Decisions
 
 - **Socket.io**: Chosen over native WebSockets for easier room management and automatic reconnection
-- **In-Memory State**: State stored in memory for simplicity - not suitable for production scale
 - **Operation-Based Undo**: Each drawing operation tracked for global undo/redo
-- **Path Optimization**: Points collected during drawing, rendered as complete paths
 - **Client-Side Rendering**: All drawing happens client-side for smooth performance
 
 ## Browser Support
@@ -127,10 +121,8 @@ collaborative-canvas/
 - Implement shape tools (rectangle, circle, line)
 - Add text tool
 - Image upload and drawing
-- Better mobile touch handling
 - Performance optimizations for 100+ users
 - User authentication
-- Drawing export (PNG/JPEG)
 - Drawing history playback
 
 ## License
